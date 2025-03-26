@@ -133,3 +133,29 @@ AOS.init({
     once: true,
 });
 
+
+function openmenu() {
+    document.getElementById("sidmenu").style.display = "flex";
+}
+
+function closemenu() {
+    document.getElementById("sidmenu").style.display = "none";
+}
+
+AOS.init({
+    duration: 800,
+    once: true,
+});
+
+function openmenu() {
+    document.getElementById("sidmenu").style.display = "flex";
+}
+
+function closemenu() {
+    document.getElementById("sidmenu").style.display = "none";
+}
+
+AOS.init({
+    duration: 800,
+    once: true,
+});
