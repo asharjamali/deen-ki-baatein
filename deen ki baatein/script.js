@@ -159,3 +159,60 @@ AOS.init({
     duration: 800,
     once: true,
 });
+
+// Menu Toggle Functions
+function openmenu() {
+    document.getElementById("sidmenu").classList.add("active");
+}
+
+function closemenu() {
+    document.getElementById("sidmenu").classList.remove("active");
+}
+
+// Initialize AOS (if not already in your script.js)
+AOS.init({
+    duration: 1000,
+    once: true
+});
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const title = document.querySelector(".animated-title");
+    const button = document.querySelector(".dev-button");
+
+    // Split title into individual characters for animation
+    const text = title.textContent;
+    title.textContent = "";
+    text.split("").forEach((char, index) => {
+        const span = document.createElement("span");
+        span.textContent = char;
+        span.style.animation = `letterPop 0.5s ease forwards ${index * 0.1 + 1}s`;
+        span.style.display = "inline-block";
+        span.style.opacity = "0";
+        title.appendChild(span);
+    });
+
+    // Button click animation reset
+    button.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevent immediate navigation for demo
+        button.style.animation = "none"; // Reset animation
+        void button.offsetWidth; // Trigger reflow
+        button.style.animation = "bounceIn 0.5s ease forwards";
+        setTimeout(() => {
+            window.location.href = "developer.html"; // Navigate after animation
+        }, 500);
+    });
+});
+
+// Add letterPop animation dynamically
+const styleSheet = document.createElement("style");
+styleSheet.textContent = `
+    @keyframes letterPop {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+`;
+document.head.appendChild(styleSheet);
