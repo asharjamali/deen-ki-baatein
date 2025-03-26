@@ -116,3 +116,20 @@ function copyAddress(button) {
     button.textContent = 'Copied!';
     setTimeout(() => button.textContent = 'Copy', 2000);
 }
+
+
+
+function openmenu() {
+    document.getElementById("sidmenu").style.display = "flex";
+}
+
+function closemenu() {
+    document.getElementById("sidmenu").style.display = "none";
+}
+
+// Initialize AOS
+AOS.init({
+    duration: 1000,
+    once: true,
+});
+

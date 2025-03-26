@@ -5,54 +5,112 @@
 }
 
 body {
-    font-family: 'Amiri', serif;
+    font-family: 'Playfair Display', serif;
     line-height: 1.6;
-    background: #fff7e6;
-    color: #2c3e50;
+    background: linear-gradient(120deg, #e0f7fa, #b2ebf2);
+    color: #004d40;
+    overflow-x: hidden;
+    background-image: url(school.jpg);
 }
 
+/* Navigation */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
-    background: linear-gradient(to right, #1a4c3b, #2c3e50);
-    border-bottom: 2px solid #c8b273;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 1rem 5%;
+    background: linear-gradient(90deg, #00695c, #004d40);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    animation: navSlide 1s ease-out;
+}
+
+@keyframes navSlide {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    font-family: 'Amiri', serif;
-    color: #c8b273;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: rotate(360deg);
 }
 
 nav ul {
     display: flex;
     list-style: none;
+    align-items: center;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: color 0.3s ease;
-    font-weight: 500;
+    padding: 0.8rem 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 235, 59, 0.3);
+    transition: all 0.4s ease;
+}
+
+nav ul li a:hover::before {
+    left: 0;
 }
 
 nav ul li a:hover {
-    color: #c8b273;
+    color: #ffeb3b;
+    transform: scale(1.1);
 }
 
+marquee h1 {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 1.6rem;
+    color: #ffeb3b;
+    animation: marqueeGlow 2s infinite alternate;
+}
+
+@keyframes marqueeGlow {
+    0% {
+        text-shadow: 0 0 5px #ffeb3b;
+    }
+
+    100% {
+        text-shadow: 0 0 15px #ffeb3b, 0 0 25px #fff;
+    }
+}
+
+/* Hero Section */
 #hero {
     text-align: center;
-    padding: 8rem 2rem;
-    background: linear-gradient(rgba(26, 76, 59, 0.95), rgba(44, 62, 80, 0.95)), 
-                url('https://source.unsplash.com/1600x900/?islamic-architecture') center/cover;
-    color: white;
-    min-height: 80vh;
+    padding: 10rem 2rem;
+    background: linear-gradient(rgba(0, 105, 92, 0.9), rgba(0, 77, 64, 0.9)),
+        url('https://source.unsplash.com/1600x900/?mosque') center/cover;
+    color: #fff;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,567 +118,374 @@ nav ul li a:hover {
     position: relative;
 }
 
-#hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 20px;
-    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAxMCI+PHBhdGggZD0iTTAgMTBoMjBsLTEwLTEweiIgZmlsbD0iI2M4YjI3MyIvPjwvc3ZnPg==') repeat-x;
+.arabic-title {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 5rem;
+    color: #ffeb3b;
+    text-shadow: 0 0 20px rgba(255, 235, 59, 0.7);
+    margin-bottom: 2rem;
+    animation: arabicWave 3s infinite;
+}
+
+@keyframes arabicWave {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-15px) scale(1.05);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
 }
 
 #hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    font-weight: 400;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    animation: typeEffect 3s infinite steps(20);
+}
+
+@keyframes typeEffect {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0;
+    }
 }
 
 .cta-button {
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    background-color: #fff;
-    color: #1a4c3b;
+    padding: 1.2rem 3rem;
+    font-size: 1.3rem;
+    background: #ffeb3b;
+    color: #00695c;
     border: none;
-    border-radius: 30px;
+    border-radius: 10px;
     cursor: pointer;
-    margin-top: 2rem;
-    transition: transform 0.3s ease;
+    transition: all 0.4s ease;
+    font-family: 'Playfair Display', serif;
 }
 
 .cta-button:hover {
-    transform: translateY(-2px);
+    transform: scale(1.15) rotate(-5deg);
+    background: #fff;
+    box-shadow: 0 0 30px rgba(255, 235, 59, 0.8);
 }
 
+/* Features Section */
 #features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-    padding: 5rem 10%;
-    background-color: #272928;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 6rem 8%;
+    background: linear-gradient(135deg, #b2ebf2, #80deea);
 }
 
 .feature {
     text-align: center;
-    padding: 2rem;
-    background: linear-gradient(145deg, #fff, #fff7e6);
-    border: 1px solid rgba(200, 178, 115, 0.3);
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    background-color: rgba(16, 185, 129, 0.1);
-}
-
-.feature::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(to right, #1a4c3b, #c8b273);
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
 }
 
 .feature:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px) rotate(2deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .feature h3 {
-    color: #1a4c3b;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #00695c;
+    animation: textSwing 2s infinite ease-in-out;
+}
+
+@keyframes textSwing {
+    0% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+
+    100% {
+        transform: rotate(-2deg);
+    }
 }
 
 .feature-icon {
-    font-size: 3rem;
-    background: linear-gradient(45deg, #1a4c3b, #c8b273);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 4rem;
+    color: #ffeb3b;
     margin-bottom: 1.5rem;
+    animation: pulseIcon 1.5s infinite;
 }
 
-.feature ul {
-    list-style: none;
-    text-align: left;
-    margin-top: 1rem;
-    padding-left: 1.5rem;
+@keyframes pulseIcon {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .feature ul li {
-    padding: 0.5rem 0;
-    position: relative;
-    color: #555;
+    font-family: 'Noto Naskh Arabic', serif;
+    color: #004d40;
+    animation: listFade 1s ease forwards;
+}
+
+@keyframes listFade {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .feature-button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    margin-top: 1.5rem;
-    background: linear-gradient(to right, #1a4c3b, #2c3e50);
-    color: white;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(45deg, #00695c, #ffeb3b);
+    color: #fff;
     text-decoration: none;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    border: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    font-family: 'Playfair Display', serif;
+    transition: all 0.4s ease;
 }
 
 .feature-button:hover {
+    transform: scale(1.1);
     background: #fff;
-    color: #1a4c3b;
-    border: 2px solid #1a4c3b;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    color: #00695c;
+    box-shadow: 0 0 20px rgba(255, 235, 59, 0.7);
 }
 
-.feature-button i {
-    margin-left: 8px;
-}
-
-.arabic-title {
-    font-family: 'Amiri', serif;
-    font-size: 4rem;
-    color: #c8b273;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    margin-bottom: 3rem;
-    text-align: center;
-    position: relative;
-}
-
-.arabic-title::before,
-.arabic-title::after {
-    content: '❈';
-    position: absolute;
-    color: #c8b273;
-    font-size: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.arabic-title::before {
-    left: -3rem;
-}
-
-.arabic-title::after {
-    right: -3rem;
-}
-
-.quotes-section {
-    padding: 5rem 2rem;
-    background: linear-gradient(145deg, #1a4c3b, #2c3e50);
-    position: relative;
-    overflow: hidden;
-}
-
-.quotes-section::before {
-    content: '۞';
-    position: absolute;
-    font-size: 15rem;
-    opacity: 0.05;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #c8b273;
-}
-
-.quote-card {
-    max-width: 700px;
-    margin: 0 auto 3rem;
-    padding: 3rem 2rem;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 10px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    position: relative;
-    overflow: hidden;
-    border: 1px solid #c8b273;
-}
-
-.quote-card::before,
-.quote-card::after {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border: 2px solid #c8b273;
-    opacity: 0.5;
-}
-
-.quote-card::before {
-    top: 10px;
-    left: 10px;
-    border-right: none;
-    border-bottom: none;
-}
-
-.quote-card::after {
-    bottom: 10px;
-    right: 10px;
-    border-left: none;
-    border-top: none;
-}
-
-.quote-arabic {
-    font-family: 'Amiri', serif;
-    font-size: 2.8rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    line-height: 1.8;
-    color: #1a4c3b;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-.quote-english {
-    font-size: 1.2rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    line-height: 1.8;
-    color: #555;
-}
-
-.quote-reference {
-    font-style: italic;
-    color: #888;
-    text-align: center;
-}
-
-.quote-divider {
-    width: 100px;
-    height: 3px;
-    background: #c8b273;
-    margin: 2rem auto;
-}
-
-footer {
-    text-align: center;
-    padding: 2.5rem;
-    background: linear-gradient(to right, #1a4c3b, #2c3e50);
-    color: white;
-    border-top: 2px solid #c8b273;
-}
-
-.about-section {
-    padding: 6rem 2rem;
-    background: #fff;
-    position: relative;
-    overflow: hidden;
-    background-color: rgba(16, 185, 129, 0.1);
-}
-
-.section-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.03;
-    background-image: repeating-linear-gradient(45deg, #1a4c3b 25%, transparent 25%, transparent 75%, #1a4c3b 75%, #1a4c3b),
-                      repeating-linear-gradient(45deg, #1a4c3b 25%, #fff 25%, #fff 75%, #1a4c3b 75%, #1a4c3b);
-    background-position: 0 0, 10px 10px;
-    background-size: 20px 20px;
-}
-
-.about-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-}
-
-.about-content h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #1a4c3b;
-    margin-bottom: 1rem;
-}
-
-.arabesque-divider {
-    width: 200px;
-    height: 30px;
-    margin: 1rem auto 3rem;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjYzhiMjczIiBkPSJNNTEyIDI1NkM1MTIgMTE0LjYgMzk3LjQgMCAyNTYgMFMwIDExNC42IDAgMjU2czExNC42IDI1NiAyNTYgMjU2IDI1Ni0xMTQuNiAyNTYtMjU2eiIvPjwvc3ZnPg==');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.2;
-}
-
-.mission-text {
-    text-align: center;
-    font-size: 1.3rem;
-    color: #2c3e50;
-    max-width: 800px;
-    margin: 0 auto 4rem;
-    line-height: 1.8;
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 0 2rem;
-}
-
-.about-card {
-    text-align: center;
-    padding: 2rem;
-    background: linear-gradient(145deg, #ffffff, #fff7e6);
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
-}
-
-.about-card:hover {
-    transform: translateY(-5px);
-}
-
-.about-card i {
-    font-size: 2.5rem;
-    color: #c8b273;
-    margin-bottom: 1.5rem;
-}
-
-.about-card h3 {
-    color: #1a4c3b;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-}
-
-.about-card p {
-    color: #555;
-    line-height: 1.6;
-}
-
-/* Contribute Section Styles */
+/* Contribute Section */
 .contribute-section {
     padding: 6rem 2rem;
-    background: linear-gradient(to bottom, #1a4c3b, #2c3e50);
+    background: linear-gradient(135deg, #00695c, #004d40);
     color: #fff;
 }
 
-.contribute-content {
-    max-width: 1200px;
-    margin: 0 auto;
+.contribute-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
     text-align: center;
+    animation: textExpand 2s infinite;
 }
 
-.contribute-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    margin-top: 4rem;
+@keyframes textExpand {
+    0% {
+        letter-spacing: 2px;
+    }
+
+    50% {
+        letter-spacing: 5px;
+    }
+
+    100% {
+        letter-spacing: 2px;
+    }
 }
 
 .contribute-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 2.5rem 2rem;
-    border-radius: 1.5rem;
-    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2.5rem;
+    border-radius: 20px;
+    transition: all 0.5s ease;
 }
 
 .contribute-card:hover {
-    transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.contribute-card i {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    transition: transform 0.3s ease;
-}
-
-.contribute-card:hover i {
-    transform: scale(1.1);
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .contribute-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    animation: textWave 2s infinite;
 }
 
-.contribute-card p {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
+@keyframes textWave {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .contribute-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 2rem;
-    color: #fff;
-    font-weight: 500;
-    margin-top: 1.5rem;
-    transition: all 0.3s ease;
+    background: #ffeb3b;
+    padding: 0.8rem 2rem;
+    border-radius: 15px;
+    color: #00695c;
+    transition: all 0.4s ease;
 }
 
 .contribute-link:hover {
+    transform: scale(1.1);
     background: #fff;
-    color: #1a4c3b;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(255, 235, 59, 0.8);
 }
 
-/* Donation specific styles */
-.donation-options {
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
+/* About Section */
+.about-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #00695c;
+    text-align: center;
+    animation: textGlow 2s infinite alternate;
 }
 
-.donation-method {
-    padding: 0.75rem 1.5rem;
-    background: rgba(67, 160, 71, 0.2);
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 5px #ffeb3b;
+    }
+
+    100% {
+        text-shadow: 0 0 20px #ffeb3b, 0 0 30px #fff;
+    }
+}
+
+.about-card {
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    transition: all 0.5s ease;
+}
+
+.about-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.about-card h3 {
+    font-family: 'Playfair Display', serif;
+    animation: textBounce 2s infinite;
+}
+
+@keyframes textBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Quotes Section */
+.quotes-section {
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, #00695c, #004d40);
+}
+
+.quote-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    animation: cardFloat 4s infinite ease-in-out;
+}
+
+@keyframes cardFloat {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.quote-arabic {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 3.2rem;
+    color: #00695c;
+    animation: arabicPulse 2s infinite;
+}
+
+@keyframes arabicPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.quote-english {
+    font-family: 'Playfair Display', serif;
+    animation: fadeInUp 1.5s ease forwards;
+}
+
+/* Footer */
+footer {
+    padding: 3rem;
+    background: linear-gradient(45deg, #00695c, #004d40);
     color: #fff;
-    border: 1px solid rgba(67, 160, 71, 0.5);
-    font-weight: 500;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
 }
 
-.donation-method:hover {
-    background: #43A047;
-    border-color: #43A047;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(67, 160, 71, 0.3);
+footer p {
+    animation: textWave 2s infinite;
 }
 
-.donate-btn {
-    background: #43A047;
-    color: #fff;
-}
-
-.donate-btn:hover {
-    background: #2E7D32;
-    color: #fff;
-}
-
-.donate-btn i {
-    color: #43A047;
-}
-
-/* Add to your existing CSS */
-.donation-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 1rem;
-    max-width: 500px;
-    width: 90%;
-    position: relative;
-}
-
-.modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #666;
-}
-
-.crypto-addresses {
-    margin-top: 1.5rem;
-}
-
-.crypto-item {
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: #f5f5f5;
-    border-radius: 0.5rem;
-}
-
-.address {
-    display: block;
-    padding: 0.5rem;
-    background: #fff;
-    border-radius: 0.25rem;
-    margin: 0.5rem 0;
-    word-break: break-all;
-}
-
-.copy-btn {
-    padding: 0.5rem 1rem;
-    background: #43A047;
-    color: white;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.copy-btn:hover {
-    background: #2E7D32;
-}
-.donate-btn:hover i {
-    color: #2E7D32;
-    transform: scale(1.2);
-}
-
+/* Media Queries */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
-        text-align: center;
     }
-    
+
     nav ul {
-        margin-top: 1rem;
         flex-direction: column;
-    }
-    
-    nav ul li {
-        margin: 0.5rem 0;
     }
 
     .arabic-title {
-        font-size: 3rem;
-    }
-    
-    .arabic-title::before,
-    .arabic-title::after {
-        display: none;
+        font-size: 3.5rem;
     }
 
-    .about-section {
-        padding: 4rem 1rem;
-    }
-    
-    .mission-text {
-        font-size: 1.1rem;
-        padding: 0 1rem;
-    }
-    
-    .about-grid {
-        padding: 0;
-    }
-
-    .contribute-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .contribute-card {
-        padding: 1.5rem;
+    #hero h1 {
+        font-size: 2.5rem;
     }
 }
