@@ -197,12 +197,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Button click animation reset
     button.addEventListener("click", (e) => {
-        e.preventDefault(); // Prevent immediate navigation for demo
+        e.preventDefault(); // Prevent immediate navigation for animation
         button.style.animation = "none"; // Reset animation
         void button.offsetWidth; // Trigger reflow
         button.style.animation = "bounceIn 0.5s ease forwards";
         setTimeout(() => {
-            window.location.href = "developer.html"; // Navigate after animation
+            window.location.href = button.getAttribute("href"); // Navigate after animation
         }, 500);
     });
 });
@@ -215,4 +215,4 @@ styleSheet.textContent = `
         100% { opacity: 1; transform: translateY(0); }
     }
 `;
-document.head.appendChild(styleSheet);
+document.head.appendChild(styleSheet);(styleSheet);

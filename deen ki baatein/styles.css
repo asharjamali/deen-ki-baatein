@@ -385,7 +385,7 @@ body {
     color: #555;
     animation: textFadeIn 2s ease forwards;
 }
-/*dveloper section start*/
+/* Developer Section Start */
 #explore-developer-section {
     min-height: 100vh;
     display: flex;
@@ -518,7 +518,7 @@ body {
     .dev-button { padding: 0.8rem 1.5rem; font-size: 1rem; }
     .dev-button .arrow-icon { font-size: 1rem; }
 }
-/*developer section end*/
+/* Developer Section End */
 /* Animated Footer Section */
 #animated-footer {
     padding: 3rem 0;
