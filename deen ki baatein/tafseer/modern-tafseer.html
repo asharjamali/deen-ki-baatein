@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+                              <meta charset="UTF-8">
+                              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                              <title>Modern Tafseer</title>
+                              <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+                                                            rel="stylesheet">
+                              <link rel="stylesheet"
+                                                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+                              <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+                              <style>
+                                                            * {
+                                                                                          margin: 0;
+                                                                                          padding: 0;
+                                                                                          box-sizing: border-box;
+                                                            }
+
+                                                            body {
+                                                                                          font-family: 'Playfair Display', serif;
+                                                                                          line-height: 1.6;
+                                                                                          background: linear-gradient(135deg, #E0F2F1, #B2DFDB);
+                                                                                          color: #00332F;
+                                                                                          overflow-x: hidden;
+                                                            }
+
+                                                            /* Navigation */
+                                                            #simple-nav {
+                                                                                          background: linear-gradient(90deg, #006064, #004D40);
+                                                                                          padding: 1rem 5%;
+                                                                                          position: fixed;
+                                                                                          top: 0;
+                                                                                          width: 100%;
+                                                                                          z-index: 1000;
+                                                                                          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                                                            }
+
+                                                            #simple-nav ul {
+                                                                                          display: flex;
+                                                                                          justify-content: flex-end;
+                                                                                          list-style: none;
+                                                            }
+
+                                                            #simple-nav ul li a {
+                                                                                          color: #FFD54F;
+                                                                                          text-decoration: none;
+                                                                                          padding: 0.8rem 1.5rem;
+                                                                                          font-size: 1.2rem;
+                                                                                          transition: color 0.3s ease;
+                                                            }
+
+                                                            #simple-nav ul li a:hover {
+                                                                                          color: #FFAB00;
+                                                            }
+
+                                                            /* Hero Section */
+                                                            #hero {
+                                                                                          text-align: center;
+                                                                                          padding: 10rem 2rem;
+                                                                                          background: linear-gradient(rgba(0, 96, 100, 0.9), rgba(0, 77, 64, 0.9)),
+                                                                                                                        url('https://source.unsplash.com/1600x900/?quran') center/cover;
+                                                                                          color: #fff;
+                                                                                          min-height: 100vh;
+                                                                                          display: flex;
+                                                                                          flex-direction: column;
+                                                                                          justify-content: center;
+                                                            }
+
+                                                            .arabic-title {
+                                                                                          font-family: 'Noto Naskh Arabic', serif;
+                                                                                          font-size: 5rem;
+                                                                                          color: #FFD54F;
+                                                                                          text-shadow: 0 0 20px rgba(255, 213, 79, 0.8);
+                                                                                          animation: floatText 3s infinite ease-in-out;
+                                                            }
+
+                                                            .hero-subtitle {
+                                                                                          font-size: 1.5rem;
+                                                                                          color: #fff;
+                                                                                          margin: 1rem 0;
+                                                                                          opacity: 0;
+                                                                                          animation: fadeInUp 1s ease forwards 0.5s;
+                                                            }
+
+                                                            .cta-button {
+                                                                                          padding: 1.2rem 3rem;
+                                                                                          font-size: 1.3rem;
+                                                                                          background: #FFAB00;
+                                                                                          color: #00332F;
+                                                                                          border: none;
+                                                                                          border-radius: 15px;
+                                                                                          cursor: pointer;
+                                                                                          transition: all 0.4s ease;
+                                                                                          animation: pulseButton 2s infinite;
+                                                            }
+
+                                                            .cta-button:hover {
+                                                                                          transform: scale(1.1);
+                                                                                          background: #FFD54F;
+                                                                                          box-shadow: 0 0 25px rgba(255, 171, 0, 0.9);
+                                                            }
+
+                                                            /* Tafseer Content Section */
+                                                            #tafseer-content {
+                                                                                          padding: 5rem 8%;
+                                                                                          background: linear-gradient(135deg, #B2DFDB, #80CBC4);
+                                                                                          text-align: center;
+                                                            }
+
+                                                            .section-title {
+                                                                                          font-size: 3rem;
+                                                                                          color: #004D40;
+                                                                                          margin-bottom: 3rem;
+                                                                                          animation: glowText 2s infinite alternate;
+                                                            }
+
+                                                            .tafseer-text {
+                                                                                          font-family: 'Noto Naskh Arabic', serif;
+                                                                                          font-size: 1.2rem;
+                                                                                          color: #00332F;
+                                                                                          max-width: 800px;
+                                                                                          margin: 0 auto 2rem;
+                                                            }
+
+                                                            .tafseer-card {
+                                                                                          background: rgba(255, 255, 255, 0.95);
+                                                                                          padding: 2rem;
+                                                                                          border-radius: 15px;
+                                                                                          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+                                                                                          transition: all 0.4s ease;
+                                                                                          margin-bottom: 2rem;
+                                                            }
+
+                                                            .tafseer-card:hover {
+                                                                                          transform: translateY(-10px);
+                                                                                          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+                                                            }
+
+                                                            .card-icon {
+                                                                                          font-size: 3rem;
+                                                                                          color: #FFAB00;
+                                                                                          margin-bottom: 1rem;
+                                                                                          animation: spinIcon 4s infinite linear;
+                                                            }
+
+                                                            .tafseer-card h3 {
+                                                                                          font-size: 1.8rem;
+                                                                                          color: #006064;
+                                                            }
+
+                                                            .tafseer-card p {
+                                                                                          font-family: 'Noto Naskh Arabic', serif;
+                                                                                          color: #00332F;
+                                                                                          font-size: 1.1rem;
+                                                                                          margin: 1rem 0;
+                                                            }
+
+                                                            /* Verse Example Section */
+                                                            #verse-example {
+                                                                                          padding: 5rem 8%;
+                                                                                          background: linear-gradient(135deg, #26A69A, #006064);
+                                                                                          text-align: center;
+                                                            }
+
+                                                            .verse-card {
+                                                                                          max-width: 700px;
+                                                                                          margin: 0 auto;
+                                                                                          padding: 3rem;
+                                                                                          background: rgba(255, 255, 255, 0.95);
+                                                                                          border-radius: 15px;
+                                                                                          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+                                                                                          animation: floatCard 4s infinite ease-in-out;
+                                                            }
+
+                                                            .verse-arabic {
+                                                                                          font-family: 'Noto Naskh Arabic', serif;
+                                                                                          font-size: 2.5rem;
+                                                                                          color: #006064;
+                                                                                          margin-bottom: 1rem;
+                                                            }
+
+                                                            .verse-english {
+                                                                                          font-size: 1.3rem;
+                                                                                          color: #00332F;
+                                                                                          margin-bottom: 0.5rem;
+                                                            }
+
+                                                            .verse-reference {
+                                                                                          font-style: italic;
+                                                                                          color: #555;
+                                                                                          margin-bottom: 1rem;
+                                                            }
+
+                                                            .verse-tafseer {
+                                                                                          font-family: 'Noto Naskh Arabic', serif;
+                                                                                          color: #00332F;
+                                                                                          font-size: 1.1rem;
+                                                            }
+
+                                                            /* Footer */
+                                                            footer {
+                                                                                          padding: 2rem;
+                                                                                          background: linear-gradient(45deg, #006064, #004D40);
+                                                                                          color: #FFD54F;
+                                                                                          text-align: center;
+                                                            }
+
+                                                            footer p {
+                                                                                          font-size: 1.2rem;
+                                                            }
+
+                                                            /* Animations */
+                                                            @keyframes floatText {
+                                                                                          0% {
+                                                                                                                        transform: translateY(0);
+                                                                                          }
+
+                                                                                          50% {
+                                                                                                                        transform: translateY(-15px);
+                                                                                          }
+
+                                                                                          100% {
+                                                                                                                        transform: translateY(0);
+                                                                                          }
+                                                            }
+
+                                                            @keyframes fadeInUp {
+                                                                                          0% {
+                                                                                                                        opacity: 0;
+                                                                                                                        transform: translateY(20px);
+                                                                                          }
+
+                                                                                          100% {
+                                                                                                                        opacity: 1;
+                                                                                                                        transform: translateY(0);
+                                                                                          }
+                                                            }
+
+                                                            @keyframes pulseButton {
+                                                                                          0% {
+                                                                                                                        transform: scale(1);
+                                                                                          }
+
+                                                                                          50% {
+                                                                                                                        transform: scale(1.05);
+                                                                                          }
+
+                                                                                          100% {
+                                                                                                                        transform: scale(1);
+                                                                                          }
+                                                            }
+
+                                                            @keyframes glowText {
+                                                                                          0% {
+                                                                                                                        text-shadow: 0 0 5px #FFD54F;
+                                                                                          }
+
+                                                                                          100% {
+                                                                                                                        text-shadow: 0 0 15px #FFD54F, 0 0 25px #fff;
+                                                                                          }
+                                                            }
+
+                                                            @keyframes spinIcon {
+                                                                                          0% {
+                                                                                                                        transform: rotate(0deg);
+                                                                                          }
+
+                                                                                          100% {
+                                                                                                                        transform: rotate(360deg);
+                                                                                          }
+                                                            }
+
+                                                            @keyframes floatCard {
+                                                                                          0% {
+                                                                                                                        transform: translateY(0);
+                                                                                          }
+
+                                                                                          50% {
+                                                                                                                        transform: translateY(-15px);
+                                                                                          }
+
+                                                                                          100% {
+                                                                                                                        transform: translateY(0);
+                                                                                          }
+                                                            }
+
+                                                            /* Responsive Design */
+                                                            @media (max-width: 768px) {
+                                                                                          #simple-nav ul {
+                                                                                                                        justify-content: center;
+                                                                                                                        flex-wrap: wrap;
+                                                                                          }
+
+                                                                                          #simple-nav ul li a {
+                                                                                                                        padding: 0.5rem 1rem;
+                                                                                                                        font-size: 1rem;
+                                                                                          }
+
+                                                                                          .arabic-title {
+                                                                                                                        font-size: 3.5rem;
+                                                                                          }
+
+                                                                                          #hero h1 {
+                                                                                                                        font-size: 2.5rem;
+                                                                                          }
+
+                                                                                          .hero-subtitle {
+                                                                                                                        font-size: 1.2rem;
+                                                                                          }
+
+                                                                                          .section-title {
+                                                                                                                        font-size: 2.5rem;
+                                                                                          }
+
+                                                                                          .tafseer-card h3 {
+                                                                                                                        font-size: 1.5rem;
+                                                                                          }
+
+                                                                                          .verse-arabic {
+                                                                                                                        font-size: 2rem;
+                                                                                          }
+                                                            }
+                              </style>
+</head>
+
+<body>
+                              <!-- Simple Navigation -->
+                              <nav id="simple-nav" data-aos="fade-down">
+                                                            <ul>
+                                                                                          <<li><a href="/deen-ki-baatein/deen ki baatein/index.html">Home</a>
+                                                                                                                        </li>
+                                                                                                                        <li><a href="tafseer.html">Tafseer</a>
+                                                                                                                        </li>
+                                                                                                                        <li><a href="/deen-ki-baatein/deen ki baatein/design.html">Developer</a>
+                                                                                                                        </li>
+                                                            </ul>
+                              </nav>
+
+                              <!-- Hero Section -->
+                              <section id="hero" data-aos="fade-up">
+                                                            <div class="arabic-title">التفسير الحديث</div>
+                                                            <h1>Modern Tafseer</h1>
+                                                            <p class="hero-subtitle">Contemporary interpretations for
+                                                                                          today’s audience</p>
+                                                            <button class="cta-button">Start Exploring</button>
+                              </section>
+
+                              <!-- Tafseer Content Section -->
+                              <section id="tafseer-content" data-aos="fade-up">
+                                                            <h2 class="section-title">About Modern Tafseer</h2>
+                                                            <p class="tafseer-text">Modern Tafseer refers to
+                                                                                          contemporary interpretations
+                                                                                          of the Quran that address
+                                                                                          current issues, scientific
+                                                                                          discoveries, and modern
+                                                                                          contexts while staying rooted
+                                                                                          in traditional scholarship.
+                                                                                          Scholars like Muhammad Asad
+                                                                                          and Yusuf Ali are notable
+                                                                                          contributors.</p>
+                                                            <div class="tafseer-card" data-aos="zoom-in">
+                                                                                          <i
+                                                                                                                        class="fas fa-lightbulb card-icon"></i>
+                                                                                          <h3>Key Features</h3>
+                                                                                          <p>Connects Quranic teachings to
+                                                                                                                        modern
+                                                                                                                        challenges,
+                                                                                                                        such
+                                                                                                                        as
+                                                                                                                        science,
+                                                                                                                        ethics,
+                                                                                                                        and
+                                                                                                                        social
+                                                                                                                        issues.
+                                                                                          </p>
+                                                            </div>
+                                                            <div class="tafseer-card" data-aos="zoom-in"
+                                                                                          data-aos-delay="100">
+                                                                                          <i
+                                                                                                                        class="fas fa-globe card-icon"></i>
+                                                                                          <h3>Global Relevance</h3>
+                                                                                          <p>Translated into multiple languages,
+                                                                                                                        making
+                                                                                                                        it
+                                                                                                                        accessible
+                                                                                                                        to
+                                                                                                                        a
+                                                                                                                        global
+                                                                                                                        audience.
+                                                                                          </p>
+                                                            </div>
+                              </section>
+
+                              <!-- Verse Example Section -->
+                              <section id="verse-example" data-aos="fade-up">
+                                                            <h2 class="section-title">Example Tafseer</h2>
+                                                            <div class="verse-card">
+                                                                                          <div class="verse-arabic">إِنَّ
+                                                                                                                        فِي
+                                                                                                                        خَلْقِ
+                                                                                                                        السَّمَاوَاتِ
+                                                                                                                        وَالْأَرْضِ
+                                                                                                                        وَاخْتِلَافِ
+                                                                                                                        اللَّيْلِ
+                                                                                                                        وَالنَّهَارِ
+                                                                                                                        لَآيَاتٍ
+                                                                                                                        لِّأُولِي
+                                                                                                                        الْأَلْبَابِ
+                                                                                          </div>
+                                                                                          <div class="verse-english">"Indeed,
+                                                                                                                        in
+                                                                                                                        the
+                                                                                                                        creation
+                                                                                                                        of
+                                                                                                                        the
+                                                                                                                        heavens
+                                                                                                                        and
+                                                                                                                        the
+                                                                                                                        earth
+                                                                                                                        and
+                                                                                                                        the
+                                                                                                                        alternation
+                                                                                                                        of
+                                                                                                                        the
+                                                                                                                        night
+                                                                                                                        and
+                                                                                                                        day
+                                                                                                                        are
+                                                                                                                        signs
+                                                                                                                        for
+                                                                                                                        those
+                                                                                                                        of
+                                                                                                                        understanding."
+                                                                                          </div>
+                                                                                          <div class="verse-reference">Surah
+                                                                                                                        Aal-E-Imran
+                                                                                                                        [3:190]
+                                                                                          </div>
+                                                                                          <p class="verse-tafseer">Modern
+                                                                                                                        Tafseer,
+                                                                                                                        such
+                                                                                                                        as
+                                                                                                                        Yusuf
+                                                                                                                        Ali’s,
+                                                                                                                        highlights
+                                                                                                                        this
+                                                                                                                        verse
+                                                                                                                        as
+                                                                                                                        an
+                                                                                                                        invitation
+                                                                                                                        to
+                                                                                                                        reflect
+                                                                                                                        on
+                                                                                                                        natural
+                                                                                                                        phenomena,
+                                                                                                                        connecting
+                                                                                                                        it
+                                                                                                                        to
+                                                                                                                        scientific
+                                                                                                                        inquiry
+                                                                                                                        and
+                                                                                                                        the
+                                                                                                                        harmony
+                                                                                                                        of
+                                                                                                                        creation
+                                                                                                                        as
+                                                                                                                        evidence
+                                                                                                                        of
+                                                                                                                        Allah’s
+                                                                                                                        wisdom.
+                                                                                          </p>
+                                                            </div>
+                              </section>
+
+                              <!-- Footer -->
+                              <footer data-aos="fade-up">
+                                                            <p>© Developed with ❤ by Ashhar Jamali</p>
+                              </footer>
+
+                              <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                              <script>
+                                                            // Initialize AOS
+                                                            AOS.init({
+                                                                                          duration: 1000,
+                                                                                          once: true
+                                                            });
+
+                                                            // Card hover animation
+                                                            document.querySelectorAll(".tafseer-card").forEach(card => {
+                                                                                          card.addEventListener("mouseenter", () => {
+                                                                                                                        card.style.animation = "pulseCard 0.5s ease";
+                                                                                          });
+                                                                                          card.addEventListener("animationend", () => {
+                                                                                                                        card.style.animation = "none"; // Reset to allow re-trigger
+                                                                                          });
+                                                            });
+
+                                                            // Button click animation
+                                                            document.querySelectorAll(".cta-button").forEach(button => {
+                                                                                          button.addEventListener("click", () => {
+                                                                                                                        button.style.animation = "bounceButton 0.5s ease";
+                                                                                                                        setTimeout(() => {
+                                                                                                                                                      button.style.animation = "pulseButton 2s infinite"; // Restore original
+                                                                                                                        }, 500);
+                                                                                          });
+                                                            });
+
+                                                            // Dynamic CSS for animations
+                                                            const styleSheet = document.createElement("style");
+                                                            styleSheet.textContent = `
+            @keyframes pulseCard {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+            @keyframes bounceButton {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.2); }
+                100% { transform: scale(1); }
+            }
+        `;
+                                                            document.head.appendChild(styleSheet);
+                              </script>
+</body>
+
+</html>

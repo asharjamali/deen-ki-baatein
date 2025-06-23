@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+                              <meta charset="UTF-8">
+                              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                              <title>Zakat - Islamic Charity</title>
+                              <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+                                                            rel="stylesheet">
+                              <link rel="stylesheet"
+                                                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+                              <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+                              <style>
+                                                            * {
+                                                                                          margin: 0;
+                                                                                          padding: 0;
+                                                                                          box-sizing: border-box;
+                                                            }
+
+                                                            body {
+                                                                                          font-family: 'Playfair Display', serif;
+                                                                                          line-height: 1.6;
+                                                                                          background: linear-gradient(135deg, #E0F2F1, #B2DFDB);
+                                                                                          color: #00332F;
+                                                                                          overflow-x: hidden;
+                                                            }
+
+                                                            /* Navigation */
+                                                            #simple-nav {
+                                                                                          background: linear-gradient(90deg, #006064, #004D40);
+                                                                                          padding: 1rem 5%;
+                                                                                          position: fixed;
+                                                                                          top: 0;
+                                                                                          width: 100%;
+                                                                                          z-index: 1000;
+                                                                                          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                                                            }
+
+                                                            #simple-nav ul {
+                                                                                          display: flex;
+                                                                                          justify-content: flex-end;
+                                                                                          list-style: none;
+                                                            }
+
+                                                            #simple-nav ul li a {
+                                                                                          color: #FFD54F;
+                                                                                          text-decoration: none;
+                                                                                          padding: 0.8rem 1.5rem;
+                                                                                          font-size: 1.2rem;
+                                                                                          transition: color 0.3s ease;
+                                                            }
+
+                                                            #simple-nav ul li a:hover {
+                                                                                          color: #FFAB00;
+                                                            }
+
+                                                            /* Hero Section */
+                                                            #hero {
+                                                                                          text-align: center;
+                                                                                          padding: 10rem 2rem;
+                                                                                          background: linear-gradient(rgba(0, 96, 100, 0.9), rgba(0, 77, 64, 0.9)),
+                                                                                                                        url('https://source.unsplash.com/1600x900/?charity') center/cover;
+                                                                                          color: #fff;
+                                                                                          min-height: 100vh;
+                                                                                          display: flex;
+                                                                                          flex-direction: column;
+                                                                                          justify-content: center;
+                                                            }
+
+                                                            .arabic-title {
+                                                                                          font-family: 'Noto Naskh Arabic', serif;
+                                                                                          font-size: 5rem;
+                                                                                          color: #FFD54F;
+                                                                                          text-shadow: 0 0 20px rgba(255, 213, 79, 0.8);
+                                                                                          animation: floatText 3s infinite ease-in-out;
+                                                            }
+
+                                                            .hero-subtitle {
+                                                                                          font-size: 1.5rem;
+                                                                                          color: #fff;
+                                                                                          margin: 1rem 0;
+                                                                                          opacity: 0;
+                                                                                          animation: fadeInUp 1s ease forwards 0.5s;
+                                                            }
+
+                                                            .cta-button {
+                                                                                          padding: 1.2rem 3rem;
+                                                                                          font-size: 1.3rem;
+                                                                                          background: #FFAB00;
+                                                                                          color: #00332F;
+                                                                                          border: none;
+                                                                                          border-radius: 15px;
+                                                                                          cursor: pointer;
+                                                                                          transition: all 0.4s ease;
+                                                                                          animation: pulseButton 2s infinite;
+                                                            }
+
+                                                            .cta-button:hover {
+                                                                                          transform: scale(1.1);
+                                                                                          background: #FFD54F;
+                                                                                          box-shadow: 0 0 25px rgba(255, 171, 0, 0.9);
+                                                            }
+
+                                                            /* Fiqh Content Section */
+                                                            #fiqh-content {
+                                                                                          padding: 5rem 8%;
+                                                                                          background: linear-gradient(135deg, #B2DFDB, #80CBC4);
+                                                                                          text-align: center;
+                                                            }
+
+                                                            .section-title {
+                                                                                          font-size: 3rem;
+                                                                                          color: #004D40;
+                                                                                          margin-bottom: 3rem;
+                                                                                          animation: glowText 2s infinite alternate;
+                                                            }
+
+                                                            .fiqh-text {
+                                                                                          font-family: 'Noto Naskh Arabic', serif;
+                                                                                          font-size: 1.2rem;
+                                                                                          color: #00332F;
+                                                                                          max-width: 800px;
+                                                                                          margin: 0 auto 2rem;
+                                                            }
+
+                                                            .fiqh-card {
+                                                                                          background: rgba(255, 255, 255, 0.95);
+                                                                                          padding: 2rem;
+                                                                                          border-radius: 15px;
+                                                                                          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+                                                                                          transition: all 0.4s ease;
+                                                                                          margin-bottom: 2rem;
+                                                            }
+
+                                                            .fiqh-card:hover {
+                                                                                          transform: translateY(-10px);
+                                                                                          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+                                                            }
+
+                                                            .card-icon {
+                                                                                          font-size: 3rem;
+                                                                                          color: #FFAB00;
+                                                                                          margin-bottom: 1rem;
+                                                                                          animation: spinIcon 4s infinite linear;
+                                                            }
+
+                                                            .fiqh-card h3 {
+                                                                                          font-size: 1.8rem;
+                                                                                          color: #006064;
+                                                            }
+
+                                                            .fiqh-card p {
+                                                                                          font-family: 'Noto Naskh Arabic', serif;
+                                                                                          color: #00332F;
+                                                                                          font-size: 1.1rem;
+                                                                                          margin: 1rem 0;
+                                                            }
+
+                                                            /* Ruling Spotlight Section */
+                                                            #ruling-spotlight {
+                                                                                          padding: 5rem 8%;
+                                                                                          background: linear-gradient(135deg, #26A69A, #006064);
+                                                                                          text-align: center;
+                                                            }
+
+                                                            .ruling-card {
+                                                                                          max-width: 700px;
+                                                                                          margin: 0 auto;
+                                                                                          padding: 3rem;
+                                                                                          background: rgba(255, 255, 255, 0.95);
+                                                                                          border-radius: 15px;
+                                                                                          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+                                                                                          animation: floatCard 4s infinite ease-in-out;
+                                                            }
+
+                                                            .ruling-title {
+                                                                                          font-family: 'Noto Naskh Arabic', serif;
+                                                                                          font-size: 2.5rem;
+                                                                                          color: #006064;
+                                                                                          margin-bottom: 1rem;
+                                                            }
+
+                                                            .ruling-text {
+                                                                                          font-size: 1.3rem;
+                                                                                          color: #00332F;
+                                                                                          margin-bottom: 0.5rem;
+                                                            }
+
+                                                            .ruling-reference {
+                                                                                          font-style: italic;
+                                                                                          color: #555;
+                                                                                          margin-bottom: 1rem;
+                                                            }
+
+                                                            .ruling-explanation {
+                                                                                          font-family: 'Noto Naskh Arabic', serif;
+                                                                                          color: #00332F;
+                                                                                          font-size: 1.1rem;
+                                                            }
+
+                                                            /* Footer */
+                                                            footer {
+                                                                                          padding: 2rem;
+                                                                                          background: linear-gradient(45deg, #006064, #004D40);
+                                                                                          color: #FFD54F;
+                                                                                          text-align: center;
+                                                            }
+
+                                                            footer p {
+                                                                                          font-size: 1.2rem;
+                                                            }
+
+                                                            /* Animations */
+                                                            @keyframes floatText {
+                                                                                          0% {
+                                                                                                                        transform: translateY(0);
+                                                                                          }
+
+                                                                                          50% {
+                                                                                                                        transform: translateY(-15px);
+                                                                                          }
+
+                                                                                          100% {
+                                                                                                                        transform: translateY(0);
+                                                                                          }
+                                                            }
+
+                                                            @keyframes fadeInUp {
+                                                                                          0% {
+                                                                                                                        opacity: 0;
+                                                                                                                        transform: translateY(20px);
+                                                                                          }
+
+                                                                                          100% {
+                                                                                                                        opacity: 1;
+                                                                                                                        transform: translateY(0);
+                                                                                          }
+                                                            }
+
+                                                            @keyframes pulseButton {
+                                                                                          0% {
+                                                                                                                        transform: scale(1);
+                                                                                          }
+
+                                                                                          50% {
+                                                                                                                        transform: scale(1.05);
+                                                                                          }
+
+                                                                                          100% {
+                                                                                                                        transform: scale(1);
+                                                                                          }
+                                                            }
+
+                                                            @keyframes glowText {
+                                                                                          0% {
+                                                                                                                        text-shadow: 0 0 5px #FFD54F;
+                                                                                          }
+
+                                                                                          100% {
+                                                                                                                        text-shadow: 0 0 15px #FFD54F, 0 0 25px #fff;
+                                                                                          }
+                                                            }
+
+                                                            @keyframes spinIcon {
+                                                                                          0% {
+                                                                                                                        transform: rotate(0deg);
+                                                                                          }
+
+                                                                                          100% {
+                                                                                                                        transform: rotate(360deg);
+                                                                                          }
+                                                            }
+
+                                                            @keyframes floatCard {
+                                                                                          0% {
+                                                                                                                        transform: translateY(0);
+                                                                                          }
+
+                                                                                          50% {
+                                                                                                                        transform: translateY(-15px);
+                                                                                          }
+
+                                                                                          100% {
+                                                                                                                        transform: translateY(0);
+                                                                                          }
+                                                            }
+
+                                                            /* Responsive Design */
+                                                            @media (max-width: 768px) {
+                                                                                          #simple-nav ul {
+                                                                                                                        justify-content: center;
+                                                                                                                        flex-wrap: wrap;
+                                                                                          }
+
+                                                                                          #simple-nav ul li a {
+                                                                                                                        padding: 0.5rem 1rem;
+                                                                                                                        font-size: 1rem;
+                                                                                          }
+
+                                                                                          .arabic-title {
+                                                                                                                        font-size: 3.5rem;
+                                                                                          }
+
+                                                                                          #hero h1 {
+                                                                                                                        font-size: 2.5rem;
+                                                                                          }
+
+                                                                                          .hero-subtitle {
+                                                                                                                        font-size: 1.2rem;
+                                                                                          }
+
+                                                                                          .section-title {
+                                                                                                                        font-size: 2.5rem;
+                                                                                          }
+
+                                                                                          .fiqh-card h3 {
+                                                                                                                        font-size: 1.5rem;
+                                                                                          }
+
+                                                                                          .ruling-title {
+                                                                                                                        font-size: 2rem;
+                                                                                          }
+                                                            }
+                              </style>
+</head>
+
+<body>
+                              <!-- Simple Navigation -->
+                              <nav id="simple-nav" data-aos="fade-down">
+                                                            <ul>
+                                                                                          <li><a href="/deen-ki-baatein/deen ki baatein/index.html">Home</a>
+                                                                                          </li>
+                                                                                          <li><a href="fiqh.html">Fiqh</a>
+                                                                                          </li>
+                                                                                          <li><a href="/deen-ki-baatein/deen ki baatein/design.html">Developer</a>
+                                                                                          </li>
+                                                            </ul>
+                              </nav>
+
+                              <!-- Hero Section -->
+                              <section id="hero" data-aos="fade-up">
+                                                            <div class="arabic-title">الزكاة</div>
+                                                            <h1>Zakat - Islamic Charity</h1>
+                                                            <p class="hero-subtitle">Understand the obligations and
+                                                                                          calculations for giving Zakat
+                                                            </p>
+                                                            <button class="cta-button">Start Exploring</button>
+                              </section>
+
+                              <!-- Fiqh Content Section -->
+                              <section id="fiqh-content" data-aos="fade-up">
+                                                            <h2 class="section-title">About Zakat</h2>
+                                                            <p class="fiqh-text">Zakat, the third pillar of Islam, is an
+                                                                                          obligatory charity that
+                                                                                          purifies wealth and supports
+                                                                                          the needy. It is due on
+                                                                                          specific types of wealth
+                                                                                          (e.g., cash, gold, livestock)
+                                                                                          when it reaches the Nisab
+                                                                                          threshold and is held for a
+                                                                                          lunar year.</p>
+                                                            <div class="fiqh-card" data-aos="zoom-in">
+                                                                                          <i
+                                                                                                                        class="fas fa-hand-holding-heart card-icon"></i>
+                                                                                          <h3>Eligibility and Nisab</h3>
+                                                                                          <p>Zakat is obligatory on Muslims
+                                                                                                                        who
+                                                                                                                        own
+                                                                                                                        wealth
+                                                                                                                        above
+                                                                                                                        the
+                                                                                                                        Nisab
+                                                                                                                        (e.g.,
+                                                                                                                        87.48g
+                                                                                                                        of
+                                                                                                                        gold
+                                                                                                                        or
+                                                                                                                        612.36g
+                                                                                                                        of
+                                                                                                                        silver)
+                                                                                                                        for
+                                                                                                                        one
+                                                                                                                        lunar
+                                                                                                                        year.
+                                                                                          </p>
+                                                            </div>
+                                                            <div class="fiqh-card" data-aos="zoom-in"
+                                                                                          data-aos-delay="100">
+                                                                                          <i
+                                                                                                                        class="fas fa-calculator card-icon"></i>
+                                                                                          <h3>Calculation</h3>
+                                                                                          <p>Zakat is 2.5% of eligible wealth,
+                                                                                                                        including
+                                                                                                                        cash,
+                                                                                                                        savings,
+                                                                                                                        gold,
+                                                                                                                        silver,
+                                                                                                                        and
+                                                                                                                        business
+                                                                                                                        assets,
+                                                                                                                        after
+                                                                                                                        deducting
+                                                                                                                        liabilities.
+                                                                                          </p>
+                                                            </div>
+                                                            <div class="fiqh-card" data-aos="zoom-in"
+                                                                                          data-aos-delay="200">
+                                                                                          <i
+                                                                                                                        class="fas fa-users card-icon"></i>
+                                                                                          <h3>Recipients</h3>
+                                                                                          <p>Zakat can be given to the poor,
+                                                                                                                        needy,
+                                                                                                                        Zakat
+                                                                                                                        collectors,
+                                                                                                                        those
+                                                                                                                        in
+                                                                                                                        debt,
+                                                                                                                        travelers,
+                                                                                                                        and
+                                                                                                                        others
+                                                                                                                        specified
+                                                                                                                        in
+                                                                                                                        Surah
+                                                                                                                        At-Tawbah
+                                                                                                                        [9:60].
+                                                                                          </p>
+                                                            </div>
+                              </section>
+
+                              <!-- Ruling Spotlight Section -->
+                              <section id="ruling-spotlight" data-aos="fade-up">
+                                                            <h2 class="section-title">Key Ruling</h2>
+                                                            <div class="ruling-card">
+                                                                                          <div class="ruling-title">Zakat
+                                                                                                                        on
+                                                                                                                        Gold
+                                                                                          </div>
+                                                                                          <div class="ruling-text">Obligation
+                                                                                                                        to
+                                                                                                                        pay
+                                                                                                                        Zakat
+                                                                                                                        on
+                                                                                                                        gold
+                                                                                                                        above
+                                                                                                                        Nisab
+                                                                                          </div>
+                                                                                          <div class="ruling-reference">Reference:
+                                                                                                                        Surah
+                                                                                                                        At-Tawbah
+                                                                                                                        [9:34]
+                                                                                          </div>
+                                                                                          <p class="ruling-explanation">Gold
+                                                                                                                        held
+                                                                                                                        for
+                                                                                                                        personal
+                                                                                                                        use
+                                                                                                                        or
+                                                                                                                        investment
+                                                                                                                        is
+                                                                                                                        subject
+                                                                                                                        to
+                                                                                                                        Zakat
+                                                                                                                        if
+                                                                                                                        it
+                                                                                                                        reaches
+                                                                                                                        87.48
+                                                                                                                        grams
+                                                                                                                        and
+                                                                                                                        is
+                                                                                                                        owned
+                                                                                                                        for
+                                                                                                                        one
+                                                                                                                        lunar
+                                                                                                                        year.
+                                                                                                                        The
+                                                                                                                        payable
+                                                                                                                        amount
+                                                                                                                        is
+                                                                                                                        2.5%
+                                                                                                                        of
+                                                                                                                        the
+                                                                                                                        total
+                                                                                                                        value,
+                                                                                                                        ensuring
+                                                                                                                        wealth
+                                                                                                                        purification
+                                                                                                                        and
+                                                                                                                        social
+                                                                                                                        welfare.
+                                                                                          </p>
+                                                            </div>
+                              </section>
+
+                              <!-- Footer -->
+                              <footer data-aos="fade-up">
+                                                            <p>© Developed with ❤ by Ashhar Jamali</p>
+                              </footer>
+
+                              <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                              <script>
+                                                            // Initialize AOS
+                                                            AOS.init({
+                                                                                          duration: 1000,
+                                                                                          once: true
+                                                            });
+
+                                                            // Card hover animation
+                                                            document.querySelectorAll(".fiqh-card").forEach(card => {
+                                                                                          card.addEventListener("mouseenter", () => {
+                                                                                                                        card.style.animation = "pulseCard 0.5s ease";
+                                                                                          });
+                                                                                          card.addEventListener("animationend", () => {
+                                                                                                                        card.style.animation = "none"; // Reset to allow re-trigger
+                                                                                          });
+                                                            });
+
+                                                            // Button click animation
+                                                            document.querySelectorAll(".cta-button").forEach(button => {
+                                                                                          button.addEventListener("click", () => {
+                                                                                                                        button.style.animation = "bounceButton 0.5s ease";
+                                                                                                                        setTimeout(() => {
+                                                                                                                                                      button.style.animation = "pulseButton 2s infinite"; // Restore original
+                                                                                                                        }, 500);
+                                                                                          });
+                                                            });
+
+                                                            // Dynamic CSS for animations
+                                                            const styleSheet = document.createElement("style");
+                                                            styleSheet.textContent = `
+            @keyframes pulseCard {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+            @keyframes bounceButton {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.2); }
+                100% { transform: scale(1); }
+            }
+        `;
+                                                            document.head.appendChild(styleSheet);
+                              </script>
+</body>
+
+</html>
